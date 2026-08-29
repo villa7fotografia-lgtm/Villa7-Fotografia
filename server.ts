@@ -11,10 +11,10 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Supabase environment constants (server-side secure storage)
-const SERVER_SUPABASE_URL = (process.env.SUPABASE_URL || 'https://twfhqhkzabvlzkgofjyj.supabase.co').replace(/\/+$/, '');
-const SERVER_SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY || 'sb_secret_x3PR5fSACPpEi2NJoaxEIQ_A9JOKuG1';
-const SERVER_SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY || 'sb_publishable_1-hLKTMZRnRLNo4kQavIAg_WtVRWpem';
-const SERVER_SUPABASE_JWKS_URL = process.env.SUPABASE_JWKS_URL || `${SERVER_SUPABASE_URL}/auth/v1/.well-known/jwks.json`;
+const SERVER_SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
+const SERVER_SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY || '';
+const SERVER_SUPABASE_PUBLISHABLE_KEY = process.env.SUPABASE_PUBLISHABLE_KEY || '';
+const SERVER_SUPABASE_JWKS_URL = process.env.SUPABASE_JWKS_URL || (SERVER_SUPABASE_URL ? `${SERVER_SUPABASE_URL}/auth/v1/.well-known/jwks.json` : '');
 const DEFAULT_BUCKET = 'Villa7 Fotografia';
 
 // Helper to get admin client with service secret key (bypasses RLS for direct storage uploads)
